@@ -7,8 +7,12 @@ docker build --no-cache -f Dockerfile.slim.ruby-3.0.0 -t krsyoung/rails-build:3.
 docker build --no-cache -f Dockerfile.slim.ruby-3.0.1 -t krsyoung/rails-build:3.0.1-slim-buster .
 docker build --no-cache -f Dockerfile.slim.ruby-3.0.2 -t krsyoung/rails-build:3.0.2-slim-buster .
 docker build --no-cache -f Dockerfile.slim.ruby-3.0.3 -t krsyoung/rails-build:3.0.3-slim-buster .
+docker build --no-cache -f Dockerfile.slim-bullseye.ruby-3.1.0 -t krsyoung/rails-build:3.1.0-slim-bullseye .
+docker build --no-cache -f Dockerfile.slim-bullseye.ruby-3.1.1 -t krsyoung/rails-build:3.1.1-slim-bullseye .
 
 docker push krsyoung/rails-build:3.0.0-slim-buster
 docker push krsyoung/rails-build:3.0.1-slim-buster
 docker push krsyoung/rails-build:3.0.2-slim-buster
 docker push krsyoung/rails-build:3.0.3-slim-buster
+docker push krsyoung/rails-build:3.1.0-slim-bullseye
+docker push krsyoung/rails-build:3.1.1-slim-bullseye
