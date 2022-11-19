@@ -1,5 +1,5 @@
 # login
-docker login --username=krsyoung --password-stdin
+docker login --username=krsyoung
 
 # 3.1.2
 docker build --no-cache -f Dockerfile.slim-bullseye.ruby-3.1.2 -t krsyoung/rails-run:3.1.2-slim-bullseye .
