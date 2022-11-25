@@ -34,7 +34,7 @@ function login () {
 # tag an exiting image as latest and push
 function release () {
   image=$1
-  version=$1
+  version=$2
   [ -z "$image" ] && echo "Error: need an image." && return 1
   [ -z "$version" ] && echo "Error: need an version." && return 1
   echo "About to release $image"
