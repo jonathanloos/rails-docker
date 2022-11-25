@@ -15,4 +15,5 @@ RUN apt-get clean && apt-get update -q \
     && rm -rf /var/lib/apt/lists \
     && rm -fr /var/cache/apt
 
-RUN date +"%Y-%m-%d %H:%M %Z" >> /etc/DOCKER_IMAGE_PATCH_DATE
+# log the image build date
+RUN echo "rails-run="$(date +"%Y-%m-%d %H:%M %Z") >> /DOCKER_IMAGE_BUILD_HISTORY

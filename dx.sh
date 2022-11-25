@@ -12,10 +12,10 @@ function help () {
   echo "  images                    - list the available images"
   echo
   echo "examples: "
-  echo "1. install latest packages for rails-run 3.1.2 image"
-  echo "   > freshen rails-run 3.1.2"
-  echo "2. after testing, promote latest image to new 3.1.2 tag"
-  echo "   > release rails-run 3.1.2"
+  echo "1. install latest packages for rails-run 3.1.3 image"
+  echo "   > freshen rails-run 3.1.3"
+  echo "2. after testing, promote latest image to new 3.1.3 tag"
+  echo "   > release rails-run 3.1.3"
   echo
 }
 

@@ -11,4 +11,5 @@ RUN bash apt.postgresql.org.sh -v 11 && \
     apt-get update -q && \
     apt-get install --assume-yes -q --no-install-recommends build-essential git postgresql-client-11 postgresql-11 sudo gnupg
 
-RUN date +"%Y-%m-%d %H:%M %Z" >> /etc/DOCKER_IMAGE_PATCH_DATE
+# log the image build date
+RUN echo "rails-run="$(date +"%Y-%m-%d %H:%M %Z") >> /DOCKER_IMAGE_BUILD_HISTORY
