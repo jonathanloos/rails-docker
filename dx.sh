@@ -9,6 +9,7 @@ function help () {
   echo "  freshen <image> <version> - build the image, tag as latest and push to Docker Hub"
   echo "  push <image> <version>    - push the version to Docker Hub"
   echo "  release <image> <version> - add the version tag to latest and push to Docker Hub"
+  echo "  update <image> <version>  - build, tag with latest, push and tag with the version"
   echo "  images                    - list the available images"
   echo
   echo "examples: "
@@ -50,7 +51,7 @@ function build () {
   version=$2
   [ -z "$image" ] && echo "Error: need an image." && return 1
   [ -z "$version" ] && echo "Error: need an version." && return 1
-  echo "About to build $image-$version"
+  echo "About to build $image:$version"
 
   dockerfile="$image/Dockerfile-$version"
   if [ ! -f $dockerfile ]; then
@@ -83,6 +84,20 @@ function freshen () {
 
   build $image $version
   push $image latest
+}
+
+# build image and tag with current date
+function update () {
+  image=$1
+  version=$2
+  [ -z "$image" ] && echo "Error: need an image." && return 1
+  [ -z "$version" ] && echo "Error: need an version." && return 1
+
+  echo "Updating $image-$version"
+
+  build $image $version
+  push $image latest
+  release $image $version
 }
 
 help
