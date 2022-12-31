@@ -69,7 +69,7 @@ function push () {
   [ -z "$image" ] && echo "Error: need an image." && return 1
   [ -z "$version" ] && echo "Error: need an version." && return 1
 
-  echo "Pushing $image-$version"
+  echo "Pushing $image:$version"
   docker push "$DOCKHER_HUB_ACCOUNT/$image:$version"
 }
 
