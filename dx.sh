@@ -38,11 +38,11 @@ function release () {
   version=$2
   [ -z "$image" ] && echo "Error: need an image." && return 1
   [ -z "$version" ] && echo "Error: need an version." && return 1
-  echo "About to release $image"
+  echo "Releasing $image:$version"
 
   # tag the specific version with latest  
   docker tag $DOCKHER_HUB_ACCOUNT/$image $DOCKHER_HUB_ACCOUNT/$image:$version
-  docker push $DOCKHER_HUB_ACCOUNT/$image:$version
+  push $image $version
 }
 
 # build image
@@ -51,7 +51,7 @@ function build () {
   version=$2
   [ -z "$image" ] && echo "Error: need an image." && return 1
   [ -z "$version" ] && echo "Error: need an version." && return 1
-  echo "About to build $image:$version"
+  echo "Building $image:$version"
 
   dockerfile="$image/Dockerfile-$version"
   if [ ! -f $dockerfile ]; then
@@ -60,7 +60,7 @@ function build () {
   fi
 
   # build, without cache and apply a version tag based on the ruby version
-  docker build --no-cache -f $dockerfile -t $DOCKHER_HUB_ACCOUNT/$image $image/
+  docker build --no-cache -f $dockerfile -t $DOCKHER_HUB_ACCOUNT/$image:$version $image/
 }
 
 function push () {
@@ -88,15 +88,15 @@ function freshen () {
 
 # build image and tag with current date
 function update () {
+  set -x
   image=$1
   version=$2
   [ -z "$image" ] && echo "Error: need an image." && return 1
   [ -z "$version" ] && echo "Error: need an version." && return 1
 
-  echo "Updating $image-$version"
+  echo "Updating $image:$version"
 
   build $image $version
-  push $image latest
   release $image $version
   release $image latest
 }
