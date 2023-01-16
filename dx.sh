@@ -12,11 +12,15 @@ function help () {
   echo "  update <image> <version>  - build, tag with latest, push and tag with the version"
   echo "  images                    - list the available images"
   echo
-  echo "examples: "
+  echo "example (test and release): "
   echo "1. install latest packages for rails-run 3.1.3 image"
   echo "   > freshen rails-run 3.1.3"
   echo "2. after testing, promote latest image to new 3.1.3 tag"
   echo "   > release rails-run 3.1.3"
+  echo
+  echo "example (full send): "
+  echo "1. build, tag and deploy an updated image rails-run 3.2.0 image"
+  echo "   > update rails-run 3.2.0"
   echo
 }
 
@@ -88,7 +92,6 @@ function freshen () {
 
 # build image and tag with current date
 function update () {
-  set -x
   image=$1
   version=$2
   [ -z "$image" ] && echo "Error: need an image." && return 1
