@@ -45,7 +45,7 @@ function release () {
   echo "Releasing $image:$version"
 
   # tag the specific version with latest  
-  docker tag $DOCKHER_HUB_ACCOUNT/$image $DOCKHER_HUB_ACCOUNT/$image:$version
+  docker tag $DOCKHER_HUB_ACCOUNT/$image:$version $DOCKHER_HUB_ACCOUNT/$image:latest
   push $image $version
 }
 
