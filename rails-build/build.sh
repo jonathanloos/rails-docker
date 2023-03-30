@@ -1,6 +1,10 @@
 # login
 docker login --username=krsyoung
 
+# 3.2.2
+docker build --no-cache -f Dockerfile.slim-bullseye.ruby-3.2.2 -t krsyoung/rails-build:3.2.2-slim-bullseye .
+docker push krsyoung/rails-build:3.2.2-slim-bullseye
+
 # 3.1.2
 docker build --no-cache -f Dockerfile.slim-bullseye.ruby-3.1.2 -t krsyoung/rails-build:3.1.2-slim-bullseye .
 docker push krsyoung/rails-build:3.1.2-slim-bullseye
