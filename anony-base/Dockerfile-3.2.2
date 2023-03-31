@@ -1,0 +1,29 @@
+# This is a base image for a ruby app that also includes a local postgres server. Convenient for very few select use cases.
+FROM ruby:3.2.2-slim-bullseye
+
+WORKDIR /app
+
+RUN apt-get clean && apt-get update -q \
+    && apt-get install --assume-yes -q --no-install-recommends \
+      build-essential \
+      curl \
+      git \ 
+      gnupg \
+      gpg \
+      gpg-agent \
+      libpq-dev \
+      sudo \
+    && apt-get autoremove --assume-yes \
+    && rm -rf /var/lib/apt/lists \
+    && rm -fr /var/cache/apt
+
+# Set-up to use a specific version of postgres
+COPY ./apt.postgresql.org.sh apt.postgresql.org.sh
+
+# Additional packages needed for compiling gems and supporting postgres server
+RUN bash apt.postgresql.org.sh -v 11 && \
+    apt-get update -q && \
+    apt-get install --assume-yes -q --no-install-recommends postgresql-client-11 postgresql-11
+
+# log the image build date
+RUN echo "anony-base="$(date +"%Y-%m-%d %H:%M %Z") >> /DOCKER_IMAGE_BUILD_HISTORY
