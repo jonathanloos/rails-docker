@@ -13,14 +13,14 @@ function help () {
   echo "  images                    - list the available images"
   echo
   echo "example (test and release): "
-  echo "1. install latest packages for rails-run 3.1.3 image"
-  echo "   > freshen rails-run 3.1.3"
-  echo "2. after testing, promote latest image to new 3.1.3 tag"
-  echo "   > release rails-run 3.1.3"
+  echo "1. install latest packages for rails-run 3.2.2 image"
+  echo "   > freshen rails-run 3.2.2"
+  echo "2. after testing, promote latest image to new 3.2.2 tag"
+  echo "   > release rails-run 3.2.2"
   echo
   echo "example (full send): "
-  echo "1. build, tag and deploy an updated image rails-run 3.2.0 image"
-  echo "   > update rails-run 3.2.0"
+  echo "1. build, tag and deploy an updated image rails-run 3.2.2 image"
+  echo "   > update rails-run 3.2.2"
   echo
 }
 
