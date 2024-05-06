@@ -12,4 +12,4 @@ RUN apt-get update -q \
     && rm -fr /var/cache/apt
 
 # log the image build date
-RUN echo "rails-run="$(date +"%Y-%m-%d %H:%M %Z") >> /DOCKER_IMAGE_BUILD_HISTORY
+RUN echo "rails-build="$(date +"%Y-%m-%d %H:%M %Z") >> /DOCKER_IMAGE_BUILD_HISTORY
