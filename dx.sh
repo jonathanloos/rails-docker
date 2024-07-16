@@ -1,5 +1,5 @@
 # /bin/bash
-DOCKHER_HUB_ACCOUNT="krsyoung"
+DOCKER_HUB_ACCOUNT="krsyoung"
 
 function help () {
   echo "** rails build tooling **"
@@ -33,7 +33,7 @@ function images () {
 
 # login to docker
 function login () {
-  docker login --username=$DOCKHER_HUB_ACCOUNT
+  docker login --username=$DOCKER_HUB_ACCOUNT
 }
 
 # tag an exiting image as latest and push
@@ -46,7 +46,7 @@ function release () {
 
   # tag the specific version with latest  
   push $image $version
-  docker tag $DOCKHER_HUB_ACCOUNT/$image:$version $DOCKHER_HUB_ACCOUNT/$image:latest
+  docker tag $DOCKER_HUB_ACCOUNT/$image:$version $DOCKER_HUB_ACCOUNT/$image:latest
   push $image latest
 }
 
@@ -65,7 +65,7 @@ function build () {
   fi
 
   # build, without cache and apply a version tag based on the ruby version
-  docker build --no-cache -f $dockerfile -t $DOCKHER_HUB_ACCOUNT/$image:$version $image/
+  docker build --no-cache -f $dockerfile -t $DOCKER_HUB_ACCOUNT/$image:$version $image/
 }
 
 function push () {
@@ -75,7 +75,7 @@ function push () {
   [ -z "$version" ] && echo "Error: need an version." && return 1
 
   echo "Pushing $image:$version"
-  docker push "$DOCKHER_HUB_ACCOUNT/$image:$version"
+  docker push "$DOCKER_HUB_ACCOUNT/$image:$version"
 }
 
 # build image and tag with current date
