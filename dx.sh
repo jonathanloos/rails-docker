@@ -41,7 +41,7 @@ function build () {
   image=$1
   version=$2
   [ -z "$image" ] && echo "Error: need an image." && return 1
-  [ -z "$version" ] && echo "Error: need an version." && return 1
+  [ -z "$version" ] && echo "Error: need a version." && return 1
 
   echo "Building $image:$version"
 
@@ -60,7 +60,7 @@ function freshen () {
   image=$1
   version=$2
   [ -z "$image" ] && echo "Error: need an image." && return 1
-  [ -z "$version" ] && echo "Error: need an version." && return 1
+  [ -z "$version" ] && echo "Error: need a version." && return 1
 
   echo "Freshening $image-$version"
 
@@ -72,7 +72,7 @@ function push () {
   image=$1
   version=$2
   [ -z "$image" ] && echo "Error: need an image." && return 1
-  [ -z "$version" ] && echo "Error: need an version." && return 1
+  [ -z "$version" ] && echo "Error: need a version." && return 1
 
   echo "Pushing $image:$version"
   docker push "$DOCKER_HUB_ACCOUNT/$image:$version"
@@ -83,7 +83,7 @@ function release () {
   image=$1
   version=$2
   [ -z "$image" ] && echo "Error: need an image." && return 1
-  [ -z "$version" ] && echo "Error: need an version." && return 1
+  [ -z "$version" ] && echo "Error: need a version." && return 1
   echo "Releasing $image:$version"
 
   # tag the specific version with latest  
@@ -97,7 +97,7 @@ function update () {
   image=$1
   version=$2
   [ -z "$image" ] && echo "Error: need an image." && return 1
-  [ -z "$version" ] && echo "Error: need an version." && return 1
+  [ -z "$version" ] && echo "Error: need a version." && return 1
 
   echo "Updating $image:$version"
 
