@@ -75,7 +75,7 @@ function push () {
   [ -z "$version" ] && echo "Error: need an version." && return 1
 
   echo "Pushing $image:$version"
-  docker push "$DOCKHER_HUB_ACCOUNT/$image:$version"
+  docker push "$DOCKER_HUB_ACCOUNT/$image:$version"
 }
 
 # tag an exiting image as latest and push
@@ -88,7 +88,7 @@ function release () {
 
   # tag the specific version with latest  
   push $image $version
-  docker tag $DOCKHER_HUB_ACCOUNT/$image:$version $DOCKHER_HUB_ACCOUNT/${image}:latest
+  docker tag $DOCKER_HUB_ACCOUNT/$image:$version $DOCKER_HUB_ACCOUNT/${image}:latest
   push $image latest
 }
 
