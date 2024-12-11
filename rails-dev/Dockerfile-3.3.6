@@ -11,7 +11,7 @@ RUN gem update --system --no-document && \
 # Install packages needed to build gems and node modules
 RUN apt-get update -qq && \
     apt-get install --no-install-recommends -y build-essential curl git libjemalloc2 postgresql-client \
-      libpq-dev libvips node-gyp pkg-config python-is-python3
+      libpq-dev libvips node-gyp pkg-config python-is-python3 sqlite3
 
 # Install JavaScript dependencies
 ARG NODE_VERSION=22.12.0
