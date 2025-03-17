@@ -1,4 +1,4 @@
-FROM ruby:3.4.1-slim-bookworm
+FROM ruby:3.4.2-slim-bookworm
 
 RUN apt-get clean && apt-get update -q \
     && apt-get install --assume-yes -q --no-install-recommends \
@@ -9,6 +9,7 @@ RUN apt-get clean && apt-get update -q \
       libyaml-dev \
       libffi-dev \
       libpq-dev \
+      procps \
     && apt-get remove python3 \
     && curl -sL https://dl.yarnpkg.com/debian/pubkey.gpg | gpg --dearmor | tee /usr/share/keyrings/yarnkey.gpg >/dev/null \
     && echo "deb [signed-by=/usr/share/keyrings/yarnkey.gpg] https://dl.yarnpkg.com/debian stable main" | tee /etc/apt/sources.list.d/yarn.list \
